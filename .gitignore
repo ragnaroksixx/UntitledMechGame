@@ -2,3 +2,5 @@ unity/Library/
 unity/.vs/
 *.csproj
 unity/Untitled Mech Game.sln
+unity/Temp/
+unity/obj/
