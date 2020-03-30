@@ -38,8 +38,10 @@ public class MechController : MonoBehaviour
             float amount = Mathf.Abs((Input.GetAxis("Horizontal")));
             Steer(dir, amount);
         }
-
-        currentSpeed = Mathf.SmoothStep(currentSpeed, speed, Time.deltaTime * 12f);
+        float damp = 12;
+        if (speed < currentSpeed)
+            damp = 6;
+        currentSpeed = Mathf.SmoothStep(currentSpeed, speed, Time.deltaTime * damp);
         speed = 0;
         currentRotate = Mathf.Lerp(currentRotate, rotate, Time.deltaTime * 4f);
         rotate = 0;
