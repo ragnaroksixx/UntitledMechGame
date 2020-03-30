@@ -228,7 +228,7 @@ namespace BNG {
         bool didParentHands = false;
 
         // Start is called before the first frame update
-        void Awake() {
+        public virtual void Awake() {
             col = GetComponent<Collider>();
             rigid = GetComponent<Rigidbody>();
 
@@ -377,6 +377,9 @@ namespace BNG {
 
                 // Should we drop the item if it's too far away?
                 foreach (var g in heldByGrabbers) {
+                    Grabber grabr = g;
+                    float distance = Vector3.Distance(transform.position, g.transform.position);
+                    //Debug.LogError(gra);
                     if (Vector3.Distance(transform.position, g.transform.position) > BreakDistance) {
                         DropItem(g, true, true);
                         break;

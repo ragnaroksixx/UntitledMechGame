@@ -1,13 +1,16 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
-namespace BNG {
+namespace BNG
+{
 
     /// <summary>
     /// Helper for joystick type physical inputs
     /// </summary>
-    public class JoystickControl : MonoBehaviour {
+    public class JoystickControl : MonoBehaviour
+    {
 
         /// <summary>
         /// Minimum angle the Level can be rotated
@@ -39,8 +42,14 @@ namespace BNG {
         float angleX;
         float angleZ;
 
+        Text text;
+        private void Awake()
+        {
+            text = transform.parent.GetComponentInChildren<Text>();
+        }
         // Update is called once per frame
-        void Update() {
+        void Update()
+        {
             // Get the modified angle of of the lever. Use this to get percentage based on Min and Max angles.
             currentRotation = transform.localEulerAngles;
             angleX = Mathf.Floor(currentRotation.x);
@@ -50,18 +59,22 @@ namespace BNG {
             angleZ = (angleZ > 180) ? angleZ - 360 : angleZ;
 
             // Cap Angles X
-            if (angleX > MaxDegrees) {
+            if (angleX > MaxDegrees)
+            {
                 transform.localEulerAngles = new Vector3(MaxDegrees, currentRotation.y, currentRotation.z);
             }
-            else if (angleX < MinDegrees) {
+            else if (angleX < MinDegrees)
+            {
                 transform.localEulerAngles = new Vector3(MinDegrees, currentRotation.y, currentRotation.z);
             }
 
             // Cap Angles Z
-            if (angleZ > MaxDegrees) {
+            if (angleZ > MaxDegrees)
+            {
                 transform.localEulerAngles = new Vector3(transform.localEulerAngles.x, currentRotation.y, MaxDegrees);
             }
-            else if (angleZ < MinDegrees) {
+            else if (angleZ < MinDegrees)
+            {
                 transform.localEulerAngles = new Vector3(transform.localEulerAngles.x, currentRotation.y, MinDegrees);
             }
 
@@ -69,13 +82,17 @@ namespace BNG {
             LeverPercentageX = (angleX - MinDegrees) / (MaxDegrees - MinDegrees) * 100;
             LeverPercentageZ = (angleZ - MinDegrees) / (MaxDegrees - MinDegrees) * 100;
 
+            text.text = "X: " + LeverPercentageX + "\n";
+            text.text += "Y: " + LeverPercentageZ;
             // Lever value changed event
             OnJoystickChange(LeverPercentageX, LeverPercentageZ);
         }
 
         // Callback for lever percentage change
-        public virtual void OnJoystickChange(float leverX, float leverY) {
-            if (onJoystickChange != null) {
+        public virtual void OnJoystickChange(float leverX, float leverY)
+        {
+            if (onJoystickChange != null)
+            {
                 onJoystickChange.Invoke(leverX, leverY);
             }
         }

@@ -5,38 +5,10 @@ using DG.Tweening;
 
 public class MechController : MonoBehaviour
 {
-
-    public enum MovementTier
-    {
-        STOP = 0,
-        NORMAL,
-        BOOST
-    }
-    MovementTier moveTier;
     public float normalSpeed = 15;
     public float boostSpeed = 30;
     public float rotationSpeed = 15;
-    private void Awake()
-    {
-    }
-    public void SetTier(MovementTier tier)
-    {
-        moveTier = tier;
-        switch (moveTier)
-        {
-            case MovementTier.STOP:
-                speed = 0;
-                break;
-            case MovementTier.NORMAL:
-                speed = normalSpeed;
-                break;
-            case MovementTier.BOOST:
-                speed = boostSpeed;
-                break;
-            default:
-                break;
-        }
-    }
+
     public Transform kartNormal;
     public Rigidbody sphere;
 
@@ -52,12 +24,12 @@ public class MechController : MonoBehaviour
         transform.position = sphere.transform.position;
 
         //Accelerate
-        if (Input.GetKeyDown(KeyCode.Mouse0))
-            SetTier(MovementTier.NORMAL);
-        else if (Input.GetKeyDown(KeyCode.Mouse1))
-            SetTier(MovementTier.STOP);
-        else if (Input.GetKeyDown(KeyCode.Mouse2))
-            SetTier(MovementTier.BOOST);
+        if (Input.GetKey(KeyCode.Mouse0) && Input.GetKey(KeyCode.Mouse1))
+            Move(1, 2);
+        else if (Input.GetKey(KeyCode.Mouse0) || Input.GetKey(KeyCode.Mouse1))
+            Move(1, 1);
+        else if (Input.GetKey(KeyCode.Mouse2))
+            Move(-1, 1);
 
         //Steer
         if (Input.GetAxis("Horizontal") != 0)
@@ -68,7 +40,9 @@ public class MechController : MonoBehaviour
         }
 
         currentSpeed = Mathf.SmoothStep(currentSpeed, speed, Time.deltaTime * 12f);
+        speed = 0;
         currentRotate = Mathf.Lerp(currentRotate, rotate, Time.deltaTime * 4f);
+        rotate = 0;
 
 
     }
@@ -99,7 +73,10 @@ public class MechController : MonoBehaviour
     {
         rotate = (rotationSpeed * direction) * amount;
     }
-
+    public void Move(int direction, float amount)
+    {
+        speed = normalSpeed * amount * amount * direction;
+    }
     private void OnDrawGizmos()
     {
         Gizmos.color = Color.red;
