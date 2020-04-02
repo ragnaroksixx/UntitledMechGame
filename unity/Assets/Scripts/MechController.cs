@@ -24,11 +24,11 @@ public class MechController : MonoBehaviour
         transform.position = sphere.transform.position;
 
         //Accelerate
-        if (Input.GetKey(KeyCode.Mouse0) && Input.GetKey(KeyCode.Mouse1))
+        if (Input.GetKey(KeyCode.W) && Input.GetKey(KeyCode.Space))
             Move(1, 2);
-        else if (Input.GetKey(KeyCode.Mouse0) || Input.GetKey(KeyCode.Mouse1))
+        else if (Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.Space))
             Move(1, 1);
-        else if (Input.GetKey(KeyCode.Mouse2))
+        else if (Input.GetKey(KeyCode.S))
             Move(-1, 1);
 
         //Steer

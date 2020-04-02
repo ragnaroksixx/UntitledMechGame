@@ -21,6 +21,13 @@ public class HoodController : MonoBehaviour
         yield return new WaitForSeconds(2);
         Close();
     }
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Mouse2))
+        {
+            Toggle();
+        }
+    }
     public void Open()
     {
         isOpen = true;
@@ -55,7 +62,7 @@ public class HoodController : MonoBehaviour
         hood.DOKill();
         hood.DOLocalRotateQuaternion(rot, closeSpeed)
             .OnComplete(() => OnMoveComplete())
-            .SetDelay(isOpen && !wasRunning? .2f : 0);
+            .SetDelay(isOpen && !wasRunning ? .2f : 0);
     }
     void OnMoveComplete()
     {
