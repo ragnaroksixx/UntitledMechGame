@@ -80,6 +80,11 @@ namespace BNG {
         public Vector2 LeftThumbstickAxis;
         public Vector2 RightThumbstickAxis;
 
+        public static InputBridge instance;
+        private void Awake()
+        {
+            instance = this;
+        }
         // Update is called once per frame
         void Update() {
 #if SDK_OCULUS

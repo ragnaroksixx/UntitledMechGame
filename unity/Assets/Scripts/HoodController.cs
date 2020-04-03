@@ -13,11 +13,13 @@ public class HoodController : MonoBehaviour
     bool isOpen;
     public LayerMask visible, nonVisible;
     Coroutine c = null;
+    public GameObject reticle;
     private void Awake()
     {
     }
     private IEnumerator Start()
     {
+        Open();
         yield return new WaitForSeconds(2);
         Close();
     }
@@ -37,6 +39,7 @@ public class HoodController : MonoBehaviour
         {
             item.layer = layer;
         }
+        reticle.SetActive(false);
         c = null;
         OnMove();
     }
@@ -79,6 +82,8 @@ public class HoodController : MonoBehaviour
         {
             item.layer = layer;
         }
+        if (!isOpen)
+            reticle.SetActive(true);
         c = null;
     }
 }

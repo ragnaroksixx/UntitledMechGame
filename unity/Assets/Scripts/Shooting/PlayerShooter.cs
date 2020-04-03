@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using BNG;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -6,14 +7,22 @@ class PlayerShooter : Shooter
 {
     public bool isRight;
     float timeToNextShoot;
-
+    KeyCode pcKey;
+    public Transform reticle;
+    public Flightstick stick;
+    public float maxRot = 60;
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Mouse0))
+        shootpoint.LookAt(reticle);
+        if (!stick.BeingHeld) return;
+        pcKey = !isRight ? KeyCode.Mouse0 : KeyCode.Mouse1;
+        bool isDown = Input.GetKeyDown(pcKey) || (isRight ? InputBridge.instance.RightTriggerDown : InputBridge.instance.LeftTriggerDown);
+        bool isHeld = Input.GetKey(pcKey) || (isRight ? InputBridge.instance.RightTrigger > 0.5f : InputBridge.instance.LeftTrigger > 0.5f);
+        if (isDown)
         {
             StartShoot();
         }
-        else if (Input.GetKey(KeyCode.Mouse0))
+        else if (isHeld)
         {
             ShootUpdate();
         }

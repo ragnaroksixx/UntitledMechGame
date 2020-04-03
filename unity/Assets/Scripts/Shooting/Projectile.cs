@@ -6,8 +6,8 @@ public class Projectile : MonoBehaviour
 {
     public GameObject onContactExplosion;
     bool onecheck;
-    public float lifespan = 5;
-    private void OnServerInitialized()
+    float lifespan = 1f;
+    private void Awake()
     {
         Destroy(this.gameObject, lifespan);
     }

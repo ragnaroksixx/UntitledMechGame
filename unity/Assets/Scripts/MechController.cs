@@ -32,11 +32,13 @@ public class MechController : MonoBehaviour
             Move(-1, 1);
 
         //Steer
-        if (Input.GetAxis("Horizontal") != 0)
+        if (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.D))
         {
-            int dir = Input.GetAxis("Horizontal") > 0 ? 1 : -1;
-            float amount = Mathf.Abs((Input.GetAxis("Horizontal")));
-            Steer(dir, amount);
+            int dir = 1;
+            if (Input.GetKey(KeyCode.A))
+                dir = -1;
+            //float amount = Mathf.Abs((Input.GetAxis("Horizontal")));
+            Steer(dir, 1);
         }
         float damp = 12;
         if (speed < currentSpeed)

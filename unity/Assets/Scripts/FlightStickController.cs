@@ -6,6 +6,8 @@ public class FlightStickController : MonoBehaviour
 {
     public Flightstick leftJoysticks, rightJoysticks;
     public MechController mech;
+    float maxRetRotX = 20, maxRetRotY = 10;
+    public Transform reticleROtator;
     public enum MechAction
     {
         positive,
@@ -53,34 +55,23 @@ public class FlightStickController : MonoBehaviour
             default:
                 break;
         }
+        float x = 0;
+        if (leftJoysticks.BeingHeld)
+            x += InputBridge.instance.LeftThumbstickAxis.x;
+        if (rightJoysticks.BeingHeld)
+            x += InputBridge.instance.RightThumbstickAxis.x;
+
+        float y = 0;
+        if (leftJoysticks.BeingHeld)
+            y += InputBridge.instance.LeftThumbstickAxis.y;
+        if (rightJoysticks.BeingHeld)
+            y += InputBridge.instance.RightThumbstickAxis.y;
+
+        x /= 2;
+        y /= 2;
+        reticleROtator.transform.localEulerAngles = new Vector3(-y * maxRetRotY, x * maxRetRotX, 0);
     }
 
-    /* public MechAction GetMoveAction()
-     {
-         float left = leftJoysticks.LeverPercentageX;
-         float right = rightJoysticks.LeverPercentageX;
-         float forwardVal = 70;
-         float backValue = 30;
-         MechAction action = MechAction.none;
-         if (left > forwardVal && right > forwardVal)
-             action = MechAction.positive;
-         else if (left < backValue && right < backValue)
-             action = MechAction.negative;
-         return action;
-     }
-     public MechAction GetRotAction()
-     {
-         float left = leftJoysticks.LeverPercentageZ;
-         float right = rightJoysticks.LeverPercentageZ;
-         float leftPosVal = 70;
-         float rightPosVal=30;
-         MechAction action = MechAction.none;
-         if (left < leftPosVal && right < rightPosVal)
-             action = MechAction.positive;
-         else if (left > leftPosVal && right > rightPosVal)
-             action = MechAction.negative;
-         return action;
-     }*/
     public MechAction GetMoveAction(out float mag)
     {
         float left = leftJoysticks.LeverPercentageX;
