@@ -6,7 +6,7 @@ public class FlightStickController : MonoBehaviour
 {
     public Flightstick leftJoysticks, rightJoysticks;
     public MechController mech;
-    float maxRetRotX = 20, maxRetRotY = 10;
+    float maxRetRotX = 40, maxRetRotY = 15;
     public Transform reticleROtator;
     public enum MechAction
     {

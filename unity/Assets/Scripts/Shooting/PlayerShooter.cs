@@ -14,10 +14,11 @@ class PlayerShooter : Shooter
     private void Update()
     {
         shootpoint.LookAt(reticle);
-        if (!stick.BeingHeld) return;
+
         pcKey = !isRight ? KeyCode.Mouse0 : KeyCode.Mouse1;
         bool isDown = Input.GetKeyDown(pcKey) || (isRight ? InputBridge.instance.RightTriggerDown : InputBridge.instance.LeftTriggerDown);
         bool isHeld = Input.GetKey(pcKey) || (isRight ? InputBridge.instance.RightTrigger > 0.5f : InputBridge.instance.LeftTrigger > 0.5f);
+        if (!stick.BeingHeld && !(isDown || isHeld)) return;
         if (isDown)
         {
             StartShoot();

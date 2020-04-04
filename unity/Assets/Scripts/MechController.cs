@@ -18,6 +18,13 @@ public class MechController : MonoBehaviour
     public float gravity = 10f;
     public LayerMask layerMask;
 
+    public static MechController player;
+
+    public int health = 3;
+    private void Awake()
+    {
+        player = this;
+    }
     void Update()
     {
         //Follow Collider

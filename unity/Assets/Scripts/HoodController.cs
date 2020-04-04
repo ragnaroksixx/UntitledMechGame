@@ -14,20 +14,21 @@ public class HoodController : MonoBehaviour
     public LayerMask visible, nonVisible;
     Coroutine c = null;
     public GameObject reticle;
+    public static HoodController instance;
     private void Awake()
     {
+        instance = this;
     }
-    private IEnumerator Start()
-    {
-        Open();
-        yield return new WaitForSeconds(2);
-        Close();
-    }
+
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Mouse2))
+        if (LevelManager.instance.isPlaying && Input.GetKeyDown(KeyCode.Mouse2))
         {
             Toggle();
+        }
+        else if (Input.GetKeyUp(KeyCode.Mouse2))
+        {
+            LevelManager.instance.StartGame();
         }
     }
     public void Open()
@@ -52,6 +53,10 @@ public class HoodController : MonoBehaviour
     {
         if (isOpen) Close();
         else Open();
+    }
+    public void StartGame()
+    {
+        Close();
     }
     void OnMove()
     {

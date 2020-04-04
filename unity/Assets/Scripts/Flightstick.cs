@@ -40,14 +40,12 @@ public class Flightstick : Grabbable
     Vector3 currentRotation;
     float angleX;
     float angleZ;
-    Text text;
     public Transform baseRef;
     public override void Awake()
     {
         base.Awake();
         ogQuat = graphic.localRotation;
         ogEuler = graphic.localEulerAngles;
-        text = transform.parent.GetComponentInChildren<Text>();
 
     }
     private void Update()
@@ -64,8 +62,6 @@ public class Flightstick : Grabbable
             LeverPercentageX = xCom * 100;
             LeverPercentageZ = yCom * 100;
 
-            text.text = "X: " + LeverPercentageX + "\n";
-            text.text += "Y: " + LeverPercentageZ;
             // Lever value changed event
             OnJoystickChange(LeverPercentageX, LeverPercentageZ);
             //transform.up = graphic.up;
@@ -102,8 +98,5 @@ public class Flightstick : Grabbable
         graphic.localRotation = ogQuat;
         LeverPercentageX = 0;
         LeverPercentageZ = 0;
-
-        text.text = "X: " + LeverPercentageX + "\n";
-        text.text += "Y: " + LeverPercentageZ;
     }
 }
