@@ -20,10 +20,12 @@ public class MechController : MonoBehaviour
 
     public static MechController player;
 
-    public int health = 3;
+    public int starthealth = 3;
+    public int health;
     private void Awake()
     {
         player = this;
+        health = starthealth;
     }
     void Update()
     {
@@ -57,7 +59,15 @@ public class MechController : MonoBehaviour
 
 
     }
-
+    public void Hit()
+    {
+        health--;
+        if (health <= 0)
+        {
+            LevelManager.instance.EndGame();
+            health = starthealth;
+        }
+    }
     private void FixedUpdate()
     {
         //Forward Acceleration

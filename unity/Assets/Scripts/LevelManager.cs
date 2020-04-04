@@ -41,6 +41,11 @@ public class LevelManager : MonoBehaviour
     {
         screen.SetActive(true);
         state = GameState.POST;
+        foreach (SpawnSequencer item in GameObject.FindObjectsOfType<SpawnSequencer>())
+        {
+            item.StopAllCoroutines();
+        }
+        Enemy.KillAll();
         HoodController.instance.Open();
     }
 }
