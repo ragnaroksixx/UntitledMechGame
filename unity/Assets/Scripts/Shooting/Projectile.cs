@@ -6,15 +6,12 @@ public class Projectile : MonoBehaviour
 {
     public GameObject onContactExplosion;
     bool onecheck;
-    float lifespan = 1f;
-    private void Awake()
-    {
-        Destroy(this.gameObject, lifespan);
-    }
-    public void Shoot(Vector3 dir, float speed)
+
+    public void Shoot(Vector3 dir, float speed, float lifeSpan)
     {
         Rigidbody rb = GetComponent<Rigidbody>();
         rb.AddForce(dir * speed);
+        Destroy(this.gameObject, lifeSpan);
     }
     private void OnCollisionEnter(Collision collision)
     {

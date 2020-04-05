@@ -16,20 +16,20 @@ MonoBehaviour:
   - enemyPrefab: {fileID: 1868820515445570916, guid: 67334a0ab0c3fd04b8a8df0eca1642e3,
       type: 3}
     spawnwerIndex: 0
-    delay: 0
+    delay: 1
     numEnemies: 3
   - enemyPrefab: {fileID: 1868820515445570916, guid: 67334a0ab0c3fd04b8a8df0eca1642e3,
       type: 3}
     spawnwerIndex: 1
-    delay: 0
+    delay: 1
     numEnemies: 3
   - enemyPrefab: {fileID: 1868820515445570916, guid: 67334a0ab0c3fd04b8a8df0eca1642e3,
       type: 3}
-    spawnwerIndex: 0
+    spawnwerIndex: 2
     delay: 1
-    numEnemies: 5
+    numEnemies: 3
   - enemyPrefab: {fileID: 1868820515445570916, guid: 67334a0ab0c3fd04b8a8df0eca1642e3,
       type: 3}
-    spawnwerIndex: 0
+    spawnwerIndex: 3
     delay: 1
-    numEnemies: 10
+    numEnemies: 3

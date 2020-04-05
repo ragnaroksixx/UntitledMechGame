@@ -194,6 +194,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hp: 2
+  score: 10
 --- !u!54 &1868820515445570912
 Rigidbody:
   m_ObjectHideFlags: 0

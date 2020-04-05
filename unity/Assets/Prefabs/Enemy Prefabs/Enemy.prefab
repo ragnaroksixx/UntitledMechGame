@@ -70,6 +70,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hp: 2
+  score: 100
 --- !u!54 &7952237652076606550
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -98,7 +99,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 688667abd31508046a01acd8df85df9d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 0}
 --- !u!1 &7952237652241641921
 GameObject:
   m_ObjectHideFlags: 0

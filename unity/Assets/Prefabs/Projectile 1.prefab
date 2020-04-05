@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6503633629598073171}
   - component: {fileID: 6503633629598073168}
-  m_Layer: 0
+  m_Layer: 4
   m_Name: Collider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -56,7 +56,7 @@ GameObject:
   - component: {fileID: 6503633629858092243}
   - component: {fileID: 6503633629858092242}
   - component: {fileID: 6503633629858092253}
-  m_Layer: 0
+  m_Layer: 4
   m_Name: Cube
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -148,7 +148,7 @@ GameObject:
   - component: {fileID: 6503633630030846604}
   - component: {fileID: 6503633630030846605}
   - component: {fileID: 7365913039792428397}
-  m_Layer: 0
+  m_Layer: 4
   m_Name: Projectile 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -213,7 +213,7 @@ GameObject:
   - component: {fileID: 6503633630164946275}
   - component: {fileID: 6503633630164946273}
   - component: {fileID: 6503633630164946272}
-  m_Layer: 0
+  m_Layer: 4
   m_Name: Particle System (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}

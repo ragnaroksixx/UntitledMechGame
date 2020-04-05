@@ -6,10 +6,9 @@ public class SpawnSequencer : MonoBehaviour
 {
     public List<SpawnSequence> sequences;
     public float spawnerSafeDistance = 1;
-    public Transform player;
     private void Start()
     {
-        
+
     }
     public IEnumerator PlaySequences()
     {
@@ -63,7 +62,7 @@ public class SpawnSequencer : MonoBehaviour
     {
         Vector3 a = s.transform.position;
         a.y = 0;
-        Vector3 b = player.transform.position;
+        Vector3 b = MechController.player.transform.position;
         b.y = 0;
         return Vector3.Distance(a, b);
     }

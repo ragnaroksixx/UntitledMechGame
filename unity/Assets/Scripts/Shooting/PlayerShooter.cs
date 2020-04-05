@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-class PlayerShooter : Shooter
+public class PlayerShooter : Shooter
 {
     public bool isRight;
     float timeToNextShoot;
@@ -11,9 +11,23 @@ class PlayerShooter : Shooter
     public Transform reticle;
     public Flightstick stick;
     public float maxRot = 60;
+
+    public enum GunType
+    {
+        NONE = 0,
+        PISTOL = 1,
+        SHOTGUN = 2,
+        MACHINEGUN = 3
+    }
+    GunType gunType;
+    public List<GameObject> guns;
+    private void Awake()
+    {
+        SetGun(GunType.NONE, true);
+    }
     private void Update()
     {
-        shootpoint.LookAt(reticle);
+        shootpoints[0].LookAt(reticle);
 
         pcKey = !isRight ? KeyCode.Mouse0 : KeyCode.Mouse1;
         bool isDown = Input.GetKeyDown(pcKey) || (isRight ? InputBridge.instance.RightTriggerDown : InputBridge.instance.LeftTriggerDown);
@@ -41,8 +55,62 @@ class PlayerShooter : Shooter
     }
     public override void Shoot()
     {
+        if (gunType == GunType.NONE) return;
         base.Shoot();
         timeToNextShoot = Time.time + shootRate;
+    }
+    public void SetGun(GunType guno, bool force = false)
+    {
+        if (gunType == guno && !force) return;
+        gunType = guno;
+        for (int i = 0; i < guns.Count; i++)
+        {
+            guns[i].SetActive(i == (int)guno);
+        }
+        isSingleSot = guno != GunType.MACHINEGUN;
+        switch (guno)
+        {
+            case GunType.NONE:
+                break;
+            case GunType.PISTOL:
+                numShots = 1;
+                lifeSpan = 0.25f;
+                break;
+            case GunType.SHOTGUN:
+                numShots = 5;
+                lifeSpan = 0.5f;
+                break;
+            case GunType.MACHINEGUN:
+                numShots = 1;
+                lifeSpan = 1;
+                break;
+            default:
+                break;
+        }
+    }
+
+    public void OnScoreUpdate(int score)
+    {
+        if (!isRight)
+        {
+            if (score < 500)
+                SetGun(GunType.PISTOL);
+            else if (score < 1500)
+                SetGun(GunType.SHOTGUN);
+            else
+                SetGun(GunType.MACHINEGUN);
+        }
+        else
+        {
+            if (score < 250)
+                SetGun(GunType.NONE);
+            else if (score < 750)
+                SetGun(GunType.PISTOL);
+            else if (score < 1750)
+                SetGun(GunType.SHOTGUN);
+            else
+                SetGun(GunType.MACHINEGUN);
+        }
     }
 }
 
