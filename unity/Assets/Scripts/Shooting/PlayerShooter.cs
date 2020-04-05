@@ -11,7 +11,8 @@ public class PlayerShooter : Shooter
     public Transform reticle;
     public Flightstick stick;
     public float maxRot = 60;
-
+    public AudioSource audioSource;
+    public AudioClip[] clips;
     public enum GunType
     {
         NONE = 0,
@@ -58,6 +59,7 @@ public class PlayerShooter : Shooter
         if (gunType == GunType.NONE) return;
         base.Shoot();
         timeToNextShoot = Time.time + shootRate;
+        audioSource.Play();
     }
     public void SetGun(GunType guno, bool force = false)
     {
@@ -67,6 +69,7 @@ public class PlayerShooter : Shooter
         {
             guns[i].SetActive(i == (int)guno);
         }
+        audioSource.clip = clips[(int)guno];
         isSingleSot = guno != GunType.MACHINEGUN;
         switch (guno)
         {
