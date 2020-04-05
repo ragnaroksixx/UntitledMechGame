@@ -104,7 +104,7 @@ public class PlayerShooter : Shooter
         {
             if (score < 100)
                 SetGun(GunType.NONE);
-            else if (score < 30)
+            else if (score < 300)
                 SetGun(GunType.PISTOL);
             else if (score < 900)
                 SetGun(GunType.SHOTGUN);
