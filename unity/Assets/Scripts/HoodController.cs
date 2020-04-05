@@ -26,7 +26,7 @@ public class HoodController : MonoBehaviour
         {
             Toggle();
         }
-        else if (Input.GetKeyUp(KeyCode.Mouse2))
+        else if (!LevelManager.instance.isPlaying && Input.GetKeyUp(KeyCode.Mouse2))
         {
             LevelManager.instance.StartGame();
         }

@@ -7,10 +7,13 @@ public class Enemy : MonoBehaviour
 {
     public static List<Enemy> enemies = new List<Enemy>();
     NavMeshAgent agent;
+    Health h;
+    
     // Use this for initialization
     void Start()
     {
         enemies.Add(this);
+        h = GetComponent<Health>();
         agent = GetComponent<NavMeshAgent>();
     }
 
@@ -22,5 +25,22 @@ public class Enemy : MonoBehaviour
     private void OnDestroy()
     {
         enemies.Remove(this);
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.tag == "Player")
+        {
+            collision.transform.parent.GetComponentInChildren<MechController>().Hit();
+            KillAll(false);
+        }
+    }
+
+    public static void KillAll(bool byPlayer)
+    {
+        foreach (Enemy item in enemies)
+        {
+            item.h.Die(byPlayer);
+        }
     }
 }

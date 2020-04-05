@@ -35,12 +35,19 @@ public class LevelManager : MonoBehaviour
             item.StartCoroutine(item.PlaySequences());
         }
         HoodController.instance.StartGame();
+        ScoreSystem.instance.NewRound();
+        MechController.player.OnGameStart();
     }
 
     public void EndGame()
     {
         screen.SetActive(true);
         state = GameState.POST;
+        foreach (SpawnSequencer item in GameObject.FindObjectsOfType<SpawnSequencer>())
+        {
+            item.StopAllCoroutines();
+        }
+        Enemy.KillAll(false);
         HoodController.instance.Open();
     }
 }
