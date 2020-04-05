@@ -9,6 +9,7 @@ public class Shooter : MonoBehaviour
     public float mag;
     public float shootRate;
     public Rigidbody player;
+    public bool isSingleSot = false;
     public virtual void Shoot()
     {
         Projectile instance = GameObject.Instantiate(prefab, shootpoint.position, shootpoint.rotation);

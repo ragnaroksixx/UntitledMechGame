@@ -35,6 +35,8 @@ public class LevelManager : MonoBehaviour
             item.StartCoroutine(item.PlaySequences());
         }
         HoodController.instance.StartGame();
+        ScoreSystem.instance.NewRound();
+        MechController.player.OnGameStart();
     }
 
     public void EndGame()
@@ -45,7 +47,7 @@ public class LevelManager : MonoBehaviour
         {
             item.StopAllCoroutines();
         }
-        Enemy.KillAll();
+        Enemy.KillAll(false);
         HoodController.instance.Open();
     }
 }

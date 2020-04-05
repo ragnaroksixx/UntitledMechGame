@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
+using UnityEngine.UI;
 
 public class MechController : MonoBehaviour
 {
@@ -20,12 +21,18 @@ public class MechController : MonoBehaviour
 
     public static MechController player;
 
-    public int starthealth = 3;
+    int starthealth = 2;
+    int maxhealth = 4;
     public int health;
+
+    public Image hpImage;
+    public List<Sprite> hpImages;
+    public Light hpLight;
     private void Awake()
     {
         player = this;
         health = starthealth;
+        UpdateHpUI();
     }
     void Update()
     {
@@ -62,11 +69,37 @@ public class MechController : MonoBehaviour
     public void Hit()
     {
         health--;
+        float flashTime = 1;
+        int numFlashes = 5;
+        float intensity = 4;
+        if (health <= 0)
+            intensity = 2;
+        hpLight.DOKill();
+        DOTween.Sequence()
+            .Append(hpLight.DOIntensity(intensity, flashTime / (float)numFlashes))
+            .Append(hpLight.DOIntensity(0, flashTime / (float)numFlashes))
+            .SetLoops(numFlashes);
         if (health <= 0)
         {
             LevelManager.instance.EndGame();
-            health = starthealth;
         }
+        UpdateHpUI();
+    }
+    public void OnGameStart()
+    {
+        health = starthealth;
+        UpdateHpUI();
+    }
+    public void GainHP(int i = 1)
+    {
+        health += i;
+        if (health > maxhealth)
+            health = maxhealth;
+        UpdateHpUI();
+    }
+    void UpdateHpUI()
+    {
+        hpImage.sprite = hpImages[health];
     }
     private void FixedUpdate()
     {
@@ -92,10 +125,20 @@ public class MechController : MonoBehaviour
 
     public void Steer(int direction, float amount)
     {
+        if (!LevelManager.instance.isPlaying)
+        {
+            rotate = 0;
+            return;
+        }
         rotate = (rotationSpeed * direction) * amount;
     }
     public void Move(int direction, float amount)
     {
+        if (!LevelManager.instance.isPlaying)
+        {
+            speed = 0;
+            return;
+        }
         speed = normalSpeed * amount * amount * direction;
     }
     private void OnDrawGizmos()

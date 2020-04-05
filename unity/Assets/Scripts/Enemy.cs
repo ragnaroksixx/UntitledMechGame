@@ -8,6 +8,7 @@ public class Enemy : MonoBehaviour
     public static List<Enemy> enemies = new List<Enemy>();
     NavMeshAgent agent;
     Health h;
+    
     // Use this for initialization
     void Start()
     {
@@ -31,15 +32,15 @@ public class Enemy : MonoBehaviour
         if (collision.gameObject.tag == "Player")
         {
             collision.transform.parent.GetComponentInChildren<MechController>().Hit();
-            h.Die();
+            KillAll(false);
         }
     }
 
-    public static void KillAll()
+    public static void KillAll(bool byPlayer)
     {
         foreach (Enemy item in enemies)
         {
-            item.h.Die();
+            item.h.Die(byPlayer);
         }
     }
 }
