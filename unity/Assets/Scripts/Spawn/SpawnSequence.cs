@@ -5,6 +5,8 @@ using System.Collections.Generic;
 [CreateAssetMenu(fileName = "New Sequence", menuName = "ScriptableObjects")]
 public class SpawnSequence : ScriptableObject
 {
+    public int minimumScore = 0;
+    public int maxScore = -1;
     public List<SpawnData> datum;
 }
 

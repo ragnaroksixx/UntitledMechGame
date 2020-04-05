@@ -1,0 +1,37 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 82cd1586c0d68ff41b78bd900afea48f, type: 3}
+  m_Name: Final Sequence 1
+  m_EditorClassIdentifier: 
+  minimumScore: 1200
+  maxScore: -1
+  datum:
+  - enemyPrefab: {fileID: 720981962473442062, guid: ca1425d36d2008b4199518353a67fc34,
+      type: 3}
+    spawnwerIndex: 5
+    delay: 3
+    numEnemies: 3
+  - enemyPrefab: {fileID: 720981962473442062, guid: ca1425d36d2008b4199518353a67fc34,
+      type: 3}
+    spawnwerIndex: 6
+    delay: 3
+    numEnemies: 3
+  - enemyPrefab: {fileID: 1868820515445570916, guid: 67334a0ab0c3fd04b8a8df0eca1642e3,
+      type: 3}
+    spawnwerIndex: 7
+    delay: 3
+    numEnemies: 3
+  - enemyPrefab: {fileID: 720981962473442062, guid: ca1425d36d2008b4199518353a67fc34,
+      type: 3}
+    spawnwerIndex: 9
+    delay: 3
+    numEnemies: 3

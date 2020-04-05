@@ -10,25 +10,27 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 82cd1586c0d68ff41b78bd900afea48f, type: 3}
-  m_Name: TestSequence
+  m_Name: Roam Sequence
   m_EditorClassIdentifier: 
+  minimumScore: 0
+  maxScore: 300
   datum:
-  - enemyPrefab: {fileID: 1868820515445570916, guid: 67334a0ab0c3fd04b8a8df0eca1642e3,
+  - enemyPrefab: {fileID: 3661099532363348778, guid: b0eb15d86d380d2499e1e7d0d9fd9169,
       type: 3}
     spawnwerIndex: 0
     delay: 1
     numEnemies: 3
-  - enemyPrefab: {fileID: 1868820515445570916, guid: 67334a0ab0c3fd04b8a8df0eca1642e3,
+  - enemyPrefab: {fileID: 3661099532363348778, guid: b0eb15d86d380d2499e1e7d0d9fd9169,
       type: 3}
     spawnwerIndex: 1
     delay: 1
     numEnemies: 3
-  - enemyPrefab: {fileID: 1868820515445570916, guid: 67334a0ab0c3fd04b8a8df0eca1642e3,
+  - enemyPrefab: {fileID: 3661099532363348778, guid: b0eb15d86d380d2499e1e7d0d9fd9169,
       type: 3}
     spawnwerIndex: 2
     delay: 1
     numEnemies: 3
-  - enemyPrefab: {fileID: 1868820515445570916, guid: 67334a0ab0c3fd04b8a8df0eca1642e3,
+  - enemyPrefab: {fileID: 3661099532363348778, guid: b0eb15d86d380d2499e1e7d0d9fd9169,
       type: 3}
     spawnwerIndex: 3
     delay: 1

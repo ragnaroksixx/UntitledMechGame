@@ -21,7 +21,7 @@ public class MechController : MonoBehaviour
 
     public static MechController player;
 
-    int starthealth = 2;
+    int starthealth = 3;
     int maxhealth = 4;
     public int health;
 
@@ -112,10 +112,8 @@ public class MechController : MonoBehaviour
         //Steering
         transform.eulerAngles = Vector3.Lerp(transform.eulerAngles, new Vector3(0, transform.eulerAngles.y + currentRotate, 0), Time.deltaTime * 5f);
 
-        RaycastHit hitOn;
         RaycastHit hitNear;
 
-        Physics.Raycast(transform.position + (transform.up * .1f), Vector3.down, out hitOn, 1.1f, layerMask);
         Physics.Raycast(transform.position + (transform.up * .1f), Vector3.down, out hitNear, 2.0f, layerMask);
 
         //Normal Rotation

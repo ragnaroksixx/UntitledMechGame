@@ -14,36 +14,46 @@ public class SpawnSequencer : MonoBehaviour
     {
         foreach (SpawnSequence item in sequences)
         {
-            yield return PlaySequence(item);
+            StartCoroutine(PlaySequence(item));
         }
-        while (true)
-            yield return PlaySequence(sequences[sequences.Count - 1]);
+        yield return null;
     }
     public IEnumerator PlaySequence(SpawnSequence s)
     {
-        List<Spawner> spawners = new List<Spawner>();
-        spawners = GetSpawners();
-        foreach (SpawnData item in s.datum)
+        while (ScoreSystem.instance.score < s.minimumScore)
+            yield return null;
+        while (true)
         {
-            for (int i = 0; i < item.numEnemies; i++)
+            if (s.maxScore != -1 && ScoreSystem.instance.score > s.maxScore)
+                yield break;
+            while (Enemy.enemies.Count > 15)
+                yield return null;
+            List<Spawner> spawners = new List<Spawner>();
+            spawners = GetSpawners();
+            foreach (SpawnData item in s.datum)
             {
-                int index = item.spawnwerIndex;
-                int pass = spawners.Count;
-                while (GetDistance(spawners[index]) < spawnerSafeDistance)
+                for (int i = 0; i < item.numEnemies; i++)
                 {
-                    index++;
+                    int index = item.spawnwerIndex;
                     if (index >= spawners.Count)
-                        index = 0;
-                    if (pass-- < 0)
-                    {
                         index = spawners.Count - 1;
-                        break;
+                    int pass = spawners.Count;
+                    while (GetDistance(spawners[index]) < spawnerSafeDistance)
+                    {
+                        index++;
+                        if (index >= spawners.Count)
+                            index = 0;
+                        if (pass-- < 0)
+                        {
+                            index = spawners.Count - 1;
+                            break;
+                        }
                     }
+                    spawners[index].Spawn(item.enemyPrefab);
+                    yield return new WaitForSeconds(1f);
                 }
-                spawners[index].Spawn(item.enemyPrefab);
-                yield return new WaitForSeconds(1f);
+                yield return new WaitForSeconds(item.delay);
             }
-            yield return new WaitForSeconds(item.delay);
         }
     }
 

@@ -238,6 +238,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sequences:
   - {fileID: 11400000, guid: 0a1a23899d4d07a45b2f8ff65b87931d, type: 2}
+  - {fileID: 11400000, guid: ca1bcd998900c174c8aced475e6fff79, type: 2}
+  - {fileID: 11400000, guid: eaba8c59e6c0b1b46ab5680cc24ec10c, type: 2}
+  - {fileID: 11400000, guid: bd694fbcd963d6e439418d4afe9606f1, type: 2}
+  - {fileID: 11400000, guid: 78c00104ed6488e4a970a87ada578d61, type: 2}
+  - {fileID: 11400000, guid: 791a78c0650fe914ca0171c165f6bd60, type: 2}
   spawnerSafeDistance: 60
 --- !u!1 &100059109824321009
 GameObject:
