@@ -17,7 +17,7 @@ MonoBehaviour:
     overrideState: 1
     value: 1
   gradingMode:
-    overrideState: 1
+    overrideState: 0
     value: 1
   externalLut:
     overrideState: 0
@@ -52,7 +52,7 @@ MonoBehaviour:
     overrideState: 0
     value: 1
   temperature:
-    overrideState: 1
+    overrideState: 0
     value: 24
   tint:
     overrideState: 1
@@ -61,7 +61,7 @@ MonoBehaviour:
     overrideState: 0
     value: {r: 1, g: 1, b: 1, a: 1}
   hueShift:
-    overrideState: 1
+    overrideState: 0
     value: 5
   saturation:
     overrideState: 1
@@ -73,7 +73,7 @@ MonoBehaviour:
     overrideState: 0
     value: 0
   contrast:
-    overrideState: 1
+    overrideState: 0
     value: 1
   mixerRedOutRedIn:
     overrideState: 0
@@ -1345,16 +1345,16 @@ MonoBehaviour:
     overrideState: 1
     value: 1
   mode:
-    overrideState: 1
+    overrideState: 0
     value: 1
   intensity:
     overrideState: 1
-    value: 0.74
+    value: 1.68
   color:
-    overrideState: 1
+    overrideState: 0
     value: {r: 0, g: 0, b: 0, a: 1}
   ambientOnly:
-    overrideState: 1
+    overrideState: 0
     value: 1
   noiseFilterTolerance:
     overrideState: 0
@@ -1367,7 +1367,7 @@ MonoBehaviour:
     value: -12
   thicknessModifier:
     overrideState: 1
-    value: 5.91
+    value: 1.92
   directLightingStrength:
     overrideState: 0
     value: 0
@@ -1394,13 +1394,13 @@ MonoBehaviour:
     overrideState: 1
     value: 1
   mode:
-    overrideState: 1
+    overrideState: 0
     value: 0
   color:
-    overrideState: 1
+    overrideState: 0
     value: {r: 0, g: 0, b: 0, a: 1}
   center:
-    overrideState: 1
+    overrideState: 0
     value: {x: 0.5, y: 0.5}
   intensity:
     overrideState: 1
@@ -1409,10 +1409,10 @@ MonoBehaviour:
     overrideState: 1
     value: 0.743
   roundness:
-    overrideState: 1
+    overrideState: 0
     value: 1
   rounded:
-    overrideState: 1
+    overrideState: 0
     value: 0
   mask:
     overrideState: 0
@@ -1433,7 +1433,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d65e486e4de6e5448a8fbb43dc8756a0, type: 3}
   m_Name: Grain
   m_EditorClassIdentifier: 
-  active: 1
+  active: 0
   enabled:
     overrideState: 1
     value: 1
