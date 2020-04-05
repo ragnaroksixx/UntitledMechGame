@@ -31,6 +31,17 @@ public class HoodController : MonoBehaviour
             LevelManager.instance.StartGame();
         }
     }
+    public void VRButtonHandler()
+    {
+        if (LevelManager.instance.isPlaying)
+        {
+            Toggle();
+        }
+        else if (!LevelManager.instance.isPlaying)
+        {
+            LevelManager.instance.StartGame();
+        }
+    }
     public void Open()
     {
         isOpen = true;

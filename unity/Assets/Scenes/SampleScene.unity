@@ -59345,6 +59345,11 @@ PrefabInstance:
       propertyPath: m_textInfo.pageCount
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3255785075584219062, guid: 5a73782b9811b464aa22e36c00f7446f,
+        type: 3}
+      propertyPath: rotationSpeed
+      value: 15
+      objectReference: {fileID: 0}
     - target: {fileID: 3255785075802653271, guid: 5a73782b9811b464aa22e36c00f7446f,
         type: 3}
       propertyPath: m_textInfo.characterCount
