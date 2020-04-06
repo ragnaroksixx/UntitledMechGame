@@ -8,7 +8,10 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/Demo.unity
     guid: 85d23a53fe036634f8e1a858d8290193
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/SampleScene.unity
     guid: 9fc0d4010bbf28b4594072e72b8655ab
+  - enabled: 1
+    path: Assets/Scenes/RalfScene 1.unity
+    guid: e7c122ac0f8abbb42b32bec10afef525
   m_configObjects: {}

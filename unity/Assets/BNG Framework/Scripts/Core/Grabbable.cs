@@ -232,9 +232,8 @@ namespace BNG {
             col = GetComponent<Collider>();
             rigid = GetComponent<Rigidbody>();
 
-            if(GameObject.FindGameObjectWithTag("Player")) {
-                input = GameObject.FindGameObjectWithTag("Player").GetComponent<InputBridge>();
-            }
+            input = InputBridge.instance;
+            
             
             events = GetComponent<GrabbableEvents>();
             collisions = new List<Collider>();

@@ -14,21 +14,18 @@ public class LevelManager : MonoBehaviour
     }
     public static GameState state = GameState.PRE;
     public GameObject startScreen, gameOverScreen;
-    GameObject screen;
     public static LevelManager instance;
     private void Start()
     {
         instance = this;
-        if (isFirstLoad)
-            screen = startScreen;
-        else
-            screen = gameOverScreen;
-        screen.SetActive(true);
+        startScreen.SetActive(true);
+        gameOverScreen.SetActive(false);
         HoodController.instance.Open();
     }
     public void StartGame()
     {
-        screen.SetActive(false);
+        startScreen.SetActive(false);
+        gameOverScreen.SetActive(false);
         state = GameState.GAME;
         foreach (SpawnSequencer item in GameObject.FindObjectsOfType<SpawnSequencer>())
         {
@@ -41,7 +38,8 @@ public class LevelManager : MonoBehaviour
 
     public void EndGame()
     {
-        screen.SetActive(true);
+        startScreen.SetActive(true);
+        gameOverScreen.SetActive(true);
         state = GameState.POST;
         foreach (SpawnSequencer item in GameObject.FindObjectsOfType<SpawnSequencer>())
         {

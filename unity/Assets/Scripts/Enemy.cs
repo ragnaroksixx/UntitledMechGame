@@ -8,11 +8,13 @@ public class Enemy : MonoBehaviour
     public static List<Enemy> enemies = new List<Enemy>();
     NavMeshAgent agent;
     Health h;
-    
+    private void Awake()
+    {
+        enemies.Add(this);
+    }
     // Use this for initialization
     void Start()
     {
-        enemies.Add(this);
         h = GetComponent<Health>();
         agent = GetComponent<NavMeshAgent>();
     }

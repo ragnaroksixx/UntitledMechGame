@@ -110,11 +110,9 @@ namespace BNG {
             grabsInTrigger = GetComponent<GrabbablesInTrigger>();
 
             // Look for input from Player
-            if (GameObject.FindGameObjectWithTag("Player")) {
-                input = GameObject.FindGameObjectWithTag("Player").GetComponent<InputBridge>();
-            }
+            input = InputBridge.instance;
 
-            if(HandsGraphics) {
+            if (HandsGraphics) {
                 handsGraphicsParent = HandsGraphics.transform.parent;
                 handsGraphicsPosition = HandsGraphics.transform.localPosition;
                 handsGraphicsRotation = HandsGraphics.transform.localRotation;

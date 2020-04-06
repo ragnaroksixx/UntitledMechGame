@@ -49,7 +49,7 @@ namespace BNG {
             }
             
             audioSource = GetComponent<AudioSource>();
-            input = GameObject.FindGameObjectWithTag("Player").GetComponent<InputBridge>();
+            input = InputBridge.instance;
         }
 
         // Update is called once per frame

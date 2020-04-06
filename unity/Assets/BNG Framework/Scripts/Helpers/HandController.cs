@@ -56,7 +56,7 @@ namespace BNG {
             transform.localRotation = Quaternion.identity;
 
             grabber = GetComponentInChildren<Grabber>();
-            input = GameObject.FindGameObjectWithTag("Player").GetComponent<InputBridge>();
+            input = InputBridge.instance;
         }
 
         // Update is called once per frame
